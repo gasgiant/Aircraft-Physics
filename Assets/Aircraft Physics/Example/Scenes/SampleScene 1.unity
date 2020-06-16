@@ -615,10 +615,10 @@ RectTransform:
   m_Father: {fileID: 2106019377}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.17437744, y: -0.05380249}
-  m_SizeDelta: {x: 0.34521484, y: 0.09849548}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 101.9, y: 0.27737}
+  m_SizeDelta: {x: 366.3452, y: 204.0985}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &542925208
 MonoBehaviour:
@@ -641,20 +641,22 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 115
+    m_FontSize: 79
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 5
     m_MaxSize: 197
-    m_Alignment: 4
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'W/S  - PITCH
+  m_Text: 'W/S - PITCH
 
-    A/D - ROLL'
+    A/D - ROLL
+
+    Q/E - YAW'
 --- !u!222 &542925209
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1215,7 +1217,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: -0.0067646513, y: -1.2991481e-11, z: -0.0000000019203346, w: 0.9999771}
+  m_LocalRotation: {x: -0.0067646555, y: 0.0000000072777024, z: -0.000000003455569,
+    w: 0.9999771}
   m_LocalPosition: {x: 0, y: 2.2078514, z: -15.4689455}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -1497,7 +1500,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1188863487}
-  m_LocalRotation: {x: -0.0067646513, y: -1.2991481e-11, z: -0.0000000019203346, w: 0.9999771}
+  m_LocalRotation: {x: -0.0067646555, y: 0.0000000072777024, z: -0.000000003455569,
+    w: 0.9999771}
   m_LocalPosition: {x: 0, y: 2.2078514, z: -15.4689455}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2550,7 +2554,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rollControlSensitivity: 0.1
   pitchControlSensitivity: 0.08
-  yawControlSensitivity: 0.2
+  yawControlSensitivity: 0.5
 --- !u!1 &2106019376
 GameObject:
   m_ObjectHideFlags: 0
@@ -2586,8 +2590,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 230.6, y: -95.3}
-  m_SizeDelta: {x: 425.52917, y: 149.24542}
+  m_AnchoredPosition: {x: 147.11, y: -100.52}
+  m_SizeDelta: {x: 258.5423, y: 159.68457}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2106019378
 MonoBehaviour:
