@@ -1,0 +1,130 @@
+fileFormatVersion: 2
+guid: 29f96d9f927cf864db7fdfb707b89203
+timeCreated: 1452055304
+licenseType: Store
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: eleron_left
+    100002: eleron_right
+    100004: flaps1
+    100006: flaps2
+    100008: gear_left
+    100010: gear_right
+    100012: proppeler
+    100014: rudder
+    100016: ruli
+    100018: Spitfire_body
+    100020: Spitfire_windows
+    100022: //RootNode
+    400000: eleron_left
+    400002: eleron_right
+    400004: flaps1
+    400006: flaps2
+    400008: gear_left
+    400010: gear_right
+    400012: proppeler
+    400014: rudder
+    400016: ruli
+    400018: Spitfire_body
+    400020: Spitfire_windows
+    400022: //RootNode
+    2300000: eleron_left
+    2300002: eleron_right
+    2300004: flaps1
+    2300006: flaps2
+    2300008: gear_left
+    2300010: gear_right
+    2300012: proppeler
+    2300014: rudder
+    2300016: ruli
+    2300018: Spitfire_body
+    2300020: Spitfire_windows
+    3300000: eleron_left
+    3300002: eleron_right
+    3300004: flaps1
+    3300006: flaps2
+    3300008: gear_left
+    3300010: gear_right
+    3300012: proppeler
+    3300014: rudder
+    3300016: ruli
+    3300018: Spitfire_body
+    3300020: Spitfire_windows
+    4300000: Spitfire_body
+    4300002: gear_left
+    4300004: gear_right
+    4300006: ruli
+    4300008: rudder
+    4300010: eleron_left
+    4300012: eleron_right
+    4300014: proppeler
+    4300016: flaps1
+    4300018: flaps2
+    4300020: Spitfire_windows
+    7400000: Take 001
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
