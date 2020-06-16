@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ce08d0de98bca14a9d6c140d2d06f14, type: 3}
+  m_Name: AircraftPhysicsDisplaySettings
+  m_EditorClassIdentifier: 
+  scaleForcesByWeight: 1
+  lengthScale: 1
+  widthScale: 1
+  showCenterOfMass: 1
+  comColor: {r: 1, g: 0.445, b: 0, a: 1}
+  showAerodynamicCenter: 1
+  adcColor: {r: 0.373, g: 0.682, b: 1, a: 1}
+  displayAngleOfAttack: 5
+  displayAirspeed: 100
+  displayAirDensity: 1.2
+  displayPitchControl: 0
+  displayRollControl: 0
+  displayYawControl: 0
+  showSurfaces: 1
+  wingColor: {r: 0.199, g: 0.254, b: 0.981, a: 0.235}
+  flapColor: {r: 1, g: 0.633, b: 0.241, a: 0.325}
+  wingAtStallColor: {r: 0.632, g: 0.051, b: 0.18, a: 0.353}
+  flapAtStallColor: {r: 1, g: 0.078, b: 0.181, a: 0.612}
+  showForces: 1
+  showTorque: 1
+  liftColor: {r: 0.373, g: 0.682, b: 1, a: 0.949}
+  dragColor: {r: 0.679, g: 0, b: 0.095, a: 0.922}
+  torqColor: {r: 0.22, g: 0.679, b: 0, a: 0.7}
