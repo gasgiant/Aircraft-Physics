@@ -27,6 +27,7 @@ public class AircraftPhysics : MonoBehaviour
     {
         foreach (var controlSurface in controlSurfaces)
         {
+            if (controlSurface.surface == null) return;
             switch (controlSurface.type)
             {
                 case ControlSurfaceType.Pitch:
