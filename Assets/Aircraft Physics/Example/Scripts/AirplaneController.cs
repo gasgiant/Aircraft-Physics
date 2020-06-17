@@ -49,13 +49,13 @@ public class AirplaneController : MonoBehaviour
         roll = rollControlSensitivity * Input.GetAxis("Horizontal");
         if (Input.GetKey(KeyCode.E))
         {
-            yaw = Mathf.SmoothDamp(yaw , -yawControlSensitivity, ref yawVel, 0.05f);
+            yaw = Mathf.SmoothDamp(yaw , -yawControlSensitivity, ref yawVel, 0.1f);
         }
         else
         {
             if (Input.GetKey(KeyCode.Q))
             {
-                yaw = Mathf.SmoothDamp(yaw, yawControlSensitivity, ref yawVel, 0.05f);
+                yaw = Mathf.SmoothDamp(yaw, yawControlSensitivity, ref yawVel, 0.1f);
             }
             else
             {

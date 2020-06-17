@@ -1217,8 +1217,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: -0.0067646555, y: 0.0000000072777024, z: -0.000000003455569,
-    w: 0.9999771}
+  m_LocalRotation: {x: -0.0067646513, y: -1.2991481e-11, z: -0.0000000019203346, w: 0.9999771}
   m_LocalPosition: {x: 0, y: 2.2078514, z: -15.4689455}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -1500,8 +1499,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1188863487}
-  m_LocalRotation: {x: -0.0067646555, y: 0.0000000072777024, z: -0.000000003455569,
-    w: 0.9999771}
+  m_LocalRotation: {x: -0.0067646513, y: -1.2991481e-11, z: -0.0000000019203346, w: 0.9999771}
   m_LocalPosition: {x: 0, y: 2.2078514, z: -15.4689455}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2515,7 +2513,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a82a38eccd42dea468bf6634fdcf8e65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thrust: 6000
+  thrust: 10000
   aerodynamicSurfaces:
   - {fileID: 1075455996}
   - {fileID: 1424892320}
@@ -2553,8 +2551,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rollControlSensitivity: 0.1
-  pitchControlSensitivity: 0.08
-  yawControlSensitivity: 0.5
+  pitchControlSensitivity: 0.1
+  yawControlSensitivity: 0.4
 --- !u!1 &2106019376
 GameObject:
   m_ObjectHideFlags: 0
