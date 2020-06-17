@@ -20,5 +20,8 @@ public class AeroSurfaceConfig : ScriptableObject
             flapFraction = 0.4f;
         if (flapFraction < 0)
             flapFraction = 0;
+
+        if (stallAngleHigh < 0) stallAngleHigh = 0;
+        if (stallAngleLow > 0) stallAngleLow = 0;
     }
 }

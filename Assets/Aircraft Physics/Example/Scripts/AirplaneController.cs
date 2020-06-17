@@ -13,10 +13,8 @@ public class AirplaneController : MonoBehaviour
     float yawControlSensitivity = 0.2f;
 
 
-    Rigidbody rb;
     float pitch;
     float yaw;
-    float yawVel;
     float roll;
 
     float thrustPercent;
@@ -25,7 +23,6 @@ public class AirplaneController : MonoBehaviour
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody>();
         aircraftPhysics = GetComponent<AircraftPhysics>();
         SetThrust(1);
     }
@@ -47,21 +44,7 @@ public class AirplaneController : MonoBehaviour
     {
         pitch = pitchControlSensitivity * Input.GetAxis("Vertical");
         roll = rollControlSensitivity * Input.GetAxis("Horizontal");
-        if (Input.GetKey(KeyCode.E))
-        {
-            yaw = Mathf.SmoothDamp(yaw , -yawControlSensitivity, ref yawVel, 0.1f);
-        }
-        else
-        {
-            if (Input.GetKey(KeyCode.Q))
-            {
-                yaw = Mathf.SmoothDamp(yaw, yawControlSensitivity, ref yawVel, 0.1f);
-            }
-            else
-            {
-                yaw = Mathf.SmoothDamp(yaw, 0, ref yawVel, 0.05f);
-            }
-        }
+        yaw = yawControlSensitivity * Input.GetAxis("Yaw");
         aircraftPhysics.SetControlSurfecesAngles(pitch, yaw, roll);
         aircraftPhysics.SetThrustPercent(thrustPercent);
     }
