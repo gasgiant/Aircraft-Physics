@@ -82,7 +82,7 @@ public class AircraftPhysics : MonoBehaviour
 
     private Vector3 PredictVelocity(Vector3 force)
     {
-        return rb.velocity + Time.fixedDeltaTime * PREDICTION_TIMESTEP_FRACTION * force / rb.mass;
+        return rb.velocity + Time.fixedDeltaTime * PREDICTION_TIMESTEP_FRACTION * (force / rb.mass + Physics.gravity);
     }
 
     private Vector3 PredictAngularVelocity(Vector3 torque)
