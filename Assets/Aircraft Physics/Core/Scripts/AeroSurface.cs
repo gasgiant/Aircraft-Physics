@@ -82,7 +82,7 @@ public class AeroSurface : MonoBehaviour
         float angleOfAttack = Mathf.Atan2(airVelocity.y, -airVelocity.x);
 
         float liftCoefficient;
-        float dragForceCoefficient;
+        float dragCoefficient;
         float torqueCoefficient;
 
         IsAtStall = !(angleOfAttack < stallAngleHigh && angleOfAttack > stallAngleLow);
@@ -91,7 +91,7 @@ public class AeroSurface : MonoBehaviour
         {
             CalculateCoefficientsAtLowAoA(angleOfAttack, 
                 out liftCoefficient, 
-                out dragForceCoefficient, 
+                out dragCoefficient, 
                 out torqueCoefficient);
         }
         else
@@ -100,7 +100,7 @@ public class AeroSurface : MonoBehaviour
             {
                 CalculateCoefficientsAtStall(angleOfAttack,
                     out liftCoefficient,
-                    out dragForceCoefficient,
+                    out dragCoefficient,
                     out torqueCoefficient);
             }
             else
@@ -139,12 +139,12 @@ public class AeroSurface : MonoBehaviour
                 }
 
                 liftCoefficient = Mathf.Lerp(liftCoefficientLow, liftCoefficientStall, lerpParam);
-                dragForceCoefficient = Mathf.Lerp(dragCoefficientLow, dragCoefficientStall, lerpParam);
+                dragCoefficient = Mathf.Lerp(dragCoefficientLow, dragCoefficientStall, lerpParam);
                 torqueCoefficient = Mathf.Lerp(torqueCoefficientLow, torqueCoefficientStall, lerpParam);
             }
             
         }
-        CurrentDrag = dragDirection * dragForceCoefficient * dynamicPressure * area;
+        CurrentDrag = dragDirection * dragCoefficient * dynamicPressure * area;
         CurrentLift = liftDirection * liftCoefficient * dynamicPressure * area;
         CurrentTorque = -transform.forward * torqueCoefficient * dynamicPressure * area * config.chord;
 
