@@ -65,9 +65,9 @@ public class AeroSurface : MonoBehaviour
         fullStallAngleLow = stallAngleLow - blendAngle;
     }
 
-    public ForceAndTorque CalculateForces(Vector3 worldAirVelocity, float airDensity, Vector3 relativePosition)
+    public BiVector3 CalculateForces(Vector3 worldAirVelocity, float airDensity, Vector3 relativePosition)
     {
-        ForceAndTorque forceAndTorque = new ForceAndTorque();
+        BiVector3 forceAndTorque = new BiVector3();
         if (!gameObject.activeInHierarchy || config == null) return forceAndTorque;
 
         if (!initialized) Initialize();
@@ -81,86 +81,60 @@ public class AeroSurface : MonoBehaviour
         float dynamicPressure = 0.5f * airDensity * airVelocity.sqrMagnitude;
         float angleOfAttack = Mathf.Atan2(airVelocity.y, -airVelocity.x);
 
-        float liftCoefficient;
-        float dragCoefficient;
-        float torqueCoefficient;
 
         IsAtStall = !(angleOfAttack < stallAngleHigh && angleOfAttack > stallAngleLow);
+        Vector3 aerodynamicCoefficients = CalculateCoefficients(angleOfAttack);
+        CurrentLift = liftDirection * aerodynamicCoefficients.x * dynamicPressure * area;
+        CurrentDrag = dragDirection * aerodynamicCoefficients.y * dynamicPressure * area;
+        CurrentTorque = -transform.forward * aerodynamicCoefficients.z * dynamicPressure * area * config.chord;
 
+        forceAndTorque.p += CurrentDrag + CurrentLift;
+        forceAndTorque.q += Vector3.Cross(relativePosition, forceAndTorque.p);
+        forceAndTorque.q += CurrentTorque;
+
+        return forceAndTorque;
+    }
+
+    private Vector3 CalculateCoefficients(float angleOfAttack)
+    {
+        Vector3 aerodynamicCoefficients;
         if (angleOfAttack < stallAngleHigh && angleOfAttack > stallAngleLow)
         {
-            CalculateCoefficientsAtLowAoA(angleOfAttack, 
-                out liftCoefficient, 
-                out dragCoefficient, 
-                out torqueCoefficient);
+            aerodynamicCoefficients = CalculateCoefficientsAtLowAoA(angleOfAttack);
         }
         else
         {
             if (angleOfAttack > fullStallAngleHigh || angleOfAttack < fullStallAngleLow)
             {
-                CalculateCoefficientsAtStall(angleOfAttack,
-                    out liftCoefficient,
-                    out dragCoefficient,
-                    out torqueCoefficient);
+                aerodynamicCoefficients = CalculateCoefficientsAtStall(angleOfAttack);
             }
             else
             {
-                float liftCoefficientLow;
-                float dragCoefficientLow;
-                float torqueCoefficientLow;
-                float liftCoefficientStall;
-                float dragCoefficientStall;
-                float torqueCoefficientStall;
+                Vector3 aerodynamicCoefficientsLow;
+                Vector3 aerodynamicCoefficientsStall;
                 float lerpParam;
 
                 if (angleOfAttack > stallAngleHigh)
                 {
-                    CalculateCoefficientsAtLowAoA(stallAngleHigh,
-                        out liftCoefficientLow,
-                        out dragCoefficientLow,
-                        out torqueCoefficientLow);
-                    CalculateCoefficientsAtStall(fullStallAngleHigh,
-                        out liftCoefficientStall,
-                        out dragCoefficientStall,
-                        out torqueCoefficientStall);
+                    aerodynamicCoefficientsLow = CalculateCoefficientsAtLowAoA(stallAngleHigh);
+                    aerodynamicCoefficientsStall = CalculateCoefficientsAtStall(fullStallAngleHigh);
                     lerpParam = (angleOfAttack - stallAngleHigh) / (fullStallAngleHigh - stallAngleHigh);
                 }
                 else
                 {
-                    CalculateCoefficientsAtLowAoA(stallAngleLow,
-                        out liftCoefficientLow,
-                        out dragCoefficientLow,
-                        out torqueCoefficientLow);
-                    CalculateCoefficientsAtStall(fullStallAngleLow,
-                        out liftCoefficientStall,
-                        out dragCoefficientStall,
-                        out torqueCoefficientStall);
+                    aerodynamicCoefficientsLow = CalculateCoefficientsAtLowAoA(stallAngleLow);
+                    aerodynamicCoefficientsStall = CalculateCoefficientsAtStall(fullStallAngleLow);
                     lerpParam = (angleOfAttack - stallAngleLow) / (fullStallAngleLow - stallAngleLow);
                 }
-
-                liftCoefficient = Mathf.Lerp(liftCoefficientLow, liftCoefficientStall, lerpParam);
-                dragCoefficient = Mathf.Lerp(dragCoefficientLow, dragCoefficientStall, lerpParam);
-                torqueCoefficient = Mathf.Lerp(torqueCoefficientLow, torqueCoefficientStall, lerpParam);
+                aerodynamicCoefficients = Vector3.Lerp(aerodynamicCoefficientsLow, aerodynamicCoefficientsStall, lerpParam);
             }
-            
         }
-        CurrentDrag = dragDirection * dragCoefficient * dynamicPressure * area;
-        CurrentLift = liftDirection * liftCoefficient * dynamicPressure * area;
-        CurrentTorque = -transform.forward * torqueCoefficient * dynamicPressure * area * config.chord;
-
-        forceAndTorque.force += CurrentDrag + CurrentLift;
-        forceAndTorque.torque += Vector3.Cross(relativePosition, forceAndTorque.force);
-        forceAndTorque.torque += CurrentTorque;
-
-        return forceAndTorque;
+        return aerodynamicCoefficients;
     }
-    
-    private void CalculateCoefficientsAtLowAoA(float angleOfAttack, 
-            out float liftCoefficient, 
-            out float dragCoefficient, 
-            out float torqueCoefficient)
+
+    private Vector3 CalculateCoefficientsAtLowAoA(float angleOfAttack)
     {
-        liftCoefficient = correctedLiftSlope * (angleOfAttack - zeroLiftAoA);
+        float liftCoefficient = correctedLiftSlope * (angleOfAttack - zeroLiftAoA);
         float inducedAngle = liftCoefficient / (Mathf.PI * config.aspectRatio);
         float effectiveAngle = angleOfAttack - zeroLiftAoA - inducedAngle;
 
@@ -168,14 +142,13 @@ public class AeroSurface : MonoBehaviour
         
         float normalCoefficient = (liftCoefficient +
             Mathf.Sin(effectiveAngle) * tangentialCoefficient) / Mathf.Cos(effectiveAngle);
-        dragCoefficient = normalCoefficient * Mathf.Sin(effectiveAngle) + tangentialCoefficient * Mathf.Cos(effectiveAngle);
-        torqueCoefficient = -normalCoefficient * TorqCoefficientProportion(effectiveAngle);
+        float dragCoefficient = normalCoefficient * Mathf.Sin(effectiveAngle) + tangentialCoefficient * Mathf.Cos(effectiveAngle);
+        float torqueCoefficient = -normalCoefficient * TorqCoefficientProportion(effectiveAngle);
+
+        return new Vector3(liftCoefficient, dragCoefficient, torqueCoefficient);
     }
 
-    private void CalculateCoefficientsAtStall(float angleOfAttack,
-            out float liftCoefficient,
-            out float dragCoefficient,
-            out float torqueCoefficient)
+    private Vector3 CalculateCoefficientsAtStall(float angleOfAttack)
     {
         float liftCoefficientLowAoA;
         if (angleOfAttack > stallAngleHigh)
@@ -208,10 +181,11 @@ public class AeroSurface : MonoBehaviour
             0.41f * (1 - Mathf.Exp(-17 / config.aspectRatio)));
         float tangentialCoefficient = 0.5f * config.skinFriction * Mathf.Cos(effectiveAngle);
 
-        liftCoefficient = normalCoefficient * Mathf.Cos(effectiveAngle) - tangentialCoefficient * Mathf.Sin(effectiveAngle);
-        dragCoefficient = normalCoefficient * Mathf.Sin(effectiveAngle) + tangentialCoefficient * Mathf.Cos(effectiveAngle);
+        float liftCoefficient = normalCoefficient * Mathf.Cos(effectiveAngle) - tangentialCoefficient * Mathf.Sin(effectiveAngle);
+        float dragCoefficient = normalCoefficient * Mathf.Sin(effectiveAngle) + tangentialCoefficient * Mathf.Cos(effectiveAngle);
+        float torqueCoefficient = -normalCoefficient * TorqCoefficientProportion(effectiveAngle);
 
-        torqueCoefficient = -normalCoefficient * TorqCoefficientProportion(effectiveAngle);
+        return new Vector3(liftCoefficient, dragCoefficient, torqueCoefficient);
     }
 
     private float TorqCoefficientProportion(float effectiveAngle)

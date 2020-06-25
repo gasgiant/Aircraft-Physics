@@ -16,7 +16,7 @@ public class AircraftPhysics : MonoBehaviour
 
     Rigidbody rb;
     float thrustPercent;
-    ForceAndTorque currentForceAndTorque;
+    BiVector3 currentForceAndTorque;
 
     public void SetThrustPercent(float percent)
     {
@@ -50,25 +50,25 @@ public class AircraftPhysics : MonoBehaviour
 
     private void FixedUpdate()
     {
-        ForceAndTorque forceAndTorqueThisFrame = 
+        BiVector3 forceAndTorqueThisFrame = 
             CalculateAerodynamicForces(rb.velocity, rb.angularVelocity, Vector3.zero, 1.2f, rb.worldCenterOfMass);
 
-        Vector3 velocityPrediction = PredictVelocity(forceAndTorqueThisFrame.force);
-        Vector3 angularVelocityPrediction = PredictAngularVelocity(forceAndTorqueThisFrame.torque);
+        Vector3 velocityPrediction = PredictVelocity(forceAndTorqueThisFrame.p);
+        Vector3 angularVelocityPrediction = PredictAngularVelocity(forceAndTorqueThisFrame.q);
 
-        ForceAndTorque forceAndTorquePrediction = 
+        BiVector3 forceAndTorquePrediction = 
             CalculateAerodynamicForces(velocityPrediction, angularVelocityPrediction, Vector3.zero, 1.2f, rb.worldCenterOfMass);
 
         currentForceAndTorque = (forceAndTorqueThisFrame + forceAndTorquePrediction) * 0.5f;
-        rb.AddForce(currentForceAndTorque.force);
-        rb.AddTorque(currentForceAndTorque.torque);
+        rb.AddForce(currentForceAndTorque.p);
+        rb.AddTorque(currentForceAndTorque.q);
 
         rb.AddForce(transform.forward * thrust * thrustPercent);
     }
 
-    private ForceAndTorque CalculateAerodynamicForces(Vector3 velocity, Vector3 angularVelocity, Vector3 wind, float airDensity, Vector3 centerOfMass)
+    private BiVector3 CalculateAerodynamicForces(Vector3 velocity, Vector3 angularVelocity, Vector3 wind, float airDensity, Vector3 centerOfMass)
     {
-        ForceAndTorque forceAndTorque = new ForceAndTorque();
+        BiVector3 forceAndTorque = new BiVector3();
         foreach (var surface in aerodynamicSurfaces)
         {
             Vector3 relativePosition = surface.transform.position - centerOfMass;
@@ -102,7 +102,7 @@ public class AircraftPhysics : MonoBehaviour
     public void CalculateCenterOfLift(out Vector3 center, out Vector3 force, Vector3 displayAirVelocity, float displayAirDensity, float pitch, float yaw, float roll)
     {
         Vector3 com;
-        ForceAndTorque forceAndTorque;
+        BiVector3 forceAndTorque;
         if (aerodynamicSurfaces == null)
         {
             center = Vector3.zero;
@@ -126,8 +126,8 @@ public class AircraftPhysics : MonoBehaviour
             forceAndTorque = currentForceAndTorque;
         }
 
-        force = forceAndTorque.force;
-        center = com + Vector3.Cross(forceAndTorque.force, forceAndTorque.torque) / forceAndTorque.force.sqrMagnitude;
+        force = forceAndTorque.p;
+        center = com + Vector3.Cross(forceAndTorque.p, forceAndTorque.q) / forceAndTorque.p.sqrMagnitude;
     }
 #endif
 }
