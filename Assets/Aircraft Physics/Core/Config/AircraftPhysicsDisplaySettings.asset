@@ -19,7 +19,7 @@ MonoBehaviour:
   comColor: {r: 1, g: 0.445, b: 0, a: 1}
   showAerodynamicCenter: 1
   adcColor: {r: 0.373, g: 0.682, b: 1, a: 1}
-  displayAngleOfAttack: 5
+  displayAngleOfAttack: 3
   displayAirspeed: 100
   displayAirDensity: 1.2
   displayPitchControl: 0

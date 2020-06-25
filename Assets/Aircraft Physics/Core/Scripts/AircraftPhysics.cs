@@ -115,7 +115,8 @@ public class AircraftPhysics : MonoBehaviour
             com = GetComponent<Rigidbody>().worldCenterOfMass;
             foreach (var surface in aerodynamicSurfaces)
             {
-                surface.Initialize();
+                if (surface.Config != null)
+                    surface.Initialize();
             }
             SetControlSurfecesAngles(pitch, yaw, roll);
             forceAndTorque = CalculateAerodynamicForces(-displayAirVelocity, Vector3.zero, Vector3.zero, displayAirDensity, com);
