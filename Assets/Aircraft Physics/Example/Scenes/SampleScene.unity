@@ -1220,8 +1220,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: -0.0067646555, y: 0.0000000072777024, z: -0.000000003455569,
-    w: 0.9999771}
+  m_LocalRotation: {x: -0.0067646513, y: -1.2991481e-11, z: -0.0000000019203346, w: 0.9999771}
   m_LocalPosition: {x: 0, y: 2.2078514, z: -15.4689455}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -1503,8 +1502,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1188863487}
-  m_LocalRotation: {x: -0.0067646555, y: 0.0000000072777024, z: -0.000000003455569,
-    w: 0.9999771}
+  m_LocalRotation: {x: -0.0067646513, y: -1.2991481e-11, z: -0.0000000019203346, w: 0.9999771}
   m_LocalPosition: {x: 0, y: 2.2078514, z: -15.4689455}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2411,7 +2409,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.32, y: 0.1, z: 0.88}
+  m_Size: {x: 2.32, y: 0.05, z: 0.88}
   m_Center: {x: 0, y: 1.04, z: -3.43}
 --- !u!136 &2030733529
 CapsuleCollider:
@@ -2423,7 +2421,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.38
+  m_Radius: 0.35
   m_Height: 2.69
   m_Direction: 2
   m_Center: {x: 0, y: 0.85, z: -1.68}
@@ -2498,7 +2496,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2066979578}
   serializedVersion: 2
-  m_Mass: 800
+  m_Mass: 500
   m_Drag: 0
   m_AngularDrag: 0
   m_UseGravity: 1
@@ -2518,7 +2516,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a82a38eccd42dea468bf6634fdcf8e65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thrust: 10000
+  thrust: 6000
   aerodynamicSurfaces:
   - {fileID: 1075455996}
   - {fileID: 1424892320}
@@ -2555,9 +2553,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b2e651fb6e03814ca392bbc92616e00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rollControlSensitivity: 0.1
-  pitchControlSensitivity: 0.1
-  yawControlSensitivity: 0.4
+  rollControlSensitivity: 0.15
+  pitchControlSensitivity: 0.2
+  yawControlSensitivity: 0.6
 --- !u!1 &2106019376
 GameObject:
   m_ObjectHideFlags: 0
