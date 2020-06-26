@@ -45,7 +45,7 @@ public class AirplaneController : MonoBehaviour
         pitch = pitchControlSensitivity * Input.GetAxis("Vertical");
         roll = rollControlSensitivity * Input.GetAxis("Horizontal");
         yaw = yawControlSensitivity * Input.GetAxis("Yaw");
-        aircraftPhysics.SetControlSurfecesAngles(pitch, yaw, roll);
+        aircraftPhysics.SetControlSurfecesAngles(pitch, roll, yaw);
         aircraftPhysics.SetThrustPercent(thrustPercent);
     }
 }

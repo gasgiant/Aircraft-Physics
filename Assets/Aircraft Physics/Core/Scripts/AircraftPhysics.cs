@@ -23,7 +23,7 @@ public class AircraftPhysics : MonoBehaviour
         thrustPercent = percent;
     }
 
-    public void SetControlSurfecesAngles(float pitch, float yaw, float roll)
+    public void SetControlSurfecesAngles(float pitch, float roll, float yaw)
     {
         foreach (var controlSurface in controlSurfaces)
         {
@@ -33,11 +33,11 @@ public class AircraftPhysics : MonoBehaviour
                 case ControlSurfaceType.Pitch:
                     controlSurface.surface.SetFlapAngle(pitch * controlSurface.flapAngle);
                     break;
-                case ControlSurfaceType.Yaw:
-                    controlSurface.surface.SetFlapAngle(yaw * controlSurface.flapAngle);
-                    break;
                 case ControlSurfaceType.Roll:
                     controlSurface.surface.SetFlapAngle(roll * controlSurface.flapAngle);
+                    break;
+                case ControlSurfaceType.Yaw:
+                    controlSurface.surface.SetFlapAngle(yaw * controlSurface.flapAngle);
                     break;
             }
         }
@@ -118,7 +118,7 @@ public class AircraftPhysics : MonoBehaviour
                 if (surface.Config != null)
                     surface.Initialize();
             }
-            SetControlSurfecesAngles(pitch, yaw, roll);
+            SetControlSurfecesAngles(pitch, roll, yaw);
             forceAndTorque = CalculateAerodynamicForces(-displayAirVelocity, Vector3.zero, Vector3.zero, displayAirDensity, com);
         }
         else
