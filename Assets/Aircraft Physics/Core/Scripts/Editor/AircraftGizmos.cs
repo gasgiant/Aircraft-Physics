@@ -49,7 +49,8 @@ public static class AircraftGizmos
     [DrawGizmo(GizmoType.InSelectionHierarchy | GizmoType.NotInSelectionHierarchy | GizmoType.Pickable)]
     public static void SurfaceGizmos(AeroSurface surf, GizmoType gizmoType)
     {
-        if (surf.Config == null) return;
+        Rigidbody rb = surf.GetComponentInParent<Rigidbody>();
+        if (surf.Config == null || rb == null) return;
         AircraftPhysicsDisplaySettings settings = AircraftPhysicsDisplaySettings.Instance;
 
         // Selection Shape
@@ -66,7 +67,9 @@ public static class AircraftGizmos
         {
             float scale = settings.lengthScale;
             if (settings.scaleForcesByWeight)
-                scale /= surf.GetComponentInParent<Rigidbody>().mass * Physics.gravity.magnitude;
+            {
+                scale /= rb.mass * Physics.gravity.magnitude;
+            }
             DrawForces(surf.transform, surf.CurrentLift * scale, surf.CurrentDrag * scale, surf.CurrentTorque * scale);
         }
     }
