@@ -2,6 +2,8 @@
 Fixed wing aircraft physics for games.
 
 ## How to make a plane
+*These instructions are WIP.*
+
 Check out the scene in the example to see how to set up the system. Here are also some tips!
 
 1. Add `Rigidbody` to your plane. Set linear and angular drag to zero. Set the mass to something around the mass of the real aircraft of similar size. 
