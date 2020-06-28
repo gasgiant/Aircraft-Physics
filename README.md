@@ -1,6 +1,9 @@
 # Aircraft-Physics
 Fixed wing aircraft physics for games.
 
+[__Watch video tutorial__](https://youtu.be/p3jDJ9FtTyM)
+![Thumbnail](https://i.imgur.com/Xx7fCtX.png "Video thumbnail")
+
 ## How to make a plane
 *These instructions are WIP.*
 
