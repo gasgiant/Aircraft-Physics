@@ -1,21 +1,8 @@
-﻿// Developed by Tom Kail at Inkle
-// Released under the MIT Licence as held at https://opensource.org/licenses/MIT
-
-// Must be placed within a folder named "Editor"
-using System;
-using System.Reflection;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEditor;
 
-/// <summary>
-/// Extends how ScriptableObject object references are displayed in the inspector
-/// Shows you all values under the object reference
-/// Also provides a button to create a new ScriptableObject if property is null.
-/// </summary>
-[CustomPropertyDrawer(typeof(ScriptableObject), true)]
-public class ExtendedScriptableObjectDrawer : PropertyDrawer
+[CustomPropertyDrawer(typeof(AeroSurfaceConfig), true)]
+public class AeroSurfaceConfigDrawer : PropertyDrawer
 {
 
     public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
@@ -38,7 +25,6 @@ public class ExtendedScriptableObjectDrawer : PropertyDrawer
                 }
                 while (prop.NextVisible(false));
             }
-            // Add a tiny bit of height if open for the background
             totalHeight += EditorGUIUtility.standardVerticalSpacing * 2;
         }
         return totalHeight;
@@ -63,6 +49,8 @@ public class ExtendedScriptableObjectDrawer : PropertyDrawer
                 var data = (ScriptableObject)property.objectReferenceValue;
                 SerializedObject serializedObject = new SerializedObject(data);
 
+                var config = (AeroSurfaceConfig)property.objectReferenceValue;
+
                 // Iterate over all the values and draw them
                 SerializedProperty prop = serializedObject.GetIterator();
                 float y = position.y + EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing;
@@ -72,9 +60,23 @@ public class ExtendedScriptableObjectDrawer : PropertyDrawer
                     {
                         // Don't bother drawing the class file
                         if (prop.name == "m_Script") continue;
-                        float height = EditorGUI.GetPropertyHeight(prop, new GUIContent(prop.displayName), true);
-                        EditorGUI.PropertyField(new Rect(position.x, y, position.width, height), prop, true);
-                        y += height + EditorGUIUtility.standardVerticalSpacing;
+
+                        if (prop.name == "aspectRatio" && config.autoAspectRatio)
+                        {
+                            GUI.enabled = false;
+                            float height = EditorGUI.GetPropertyHeight(prop, new GUIContent(prop.displayName), true);
+                            EditorGUI.PropertyField(new Rect(position.x, y, position.width, height), prop, true);
+                            y += height + EditorGUIUtility.standardVerticalSpacing;
+                            GUI.enabled = true;
+                        }
+                        else
+                        {
+                            float height = EditorGUI.GetPropertyHeight(prop, new GUIContent(prop.displayName), true);
+                            EditorGUI.PropertyField(new Rect(position.x, y, position.width, height), prop, true);
+                            y += height + EditorGUIUtility.standardVerticalSpacing;
+                        }
+
+                        
                     }
                     while (prop.NextVisible(false));
                 }
@@ -86,36 +88,9 @@ public class ExtendedScriptableObjectDrawer : PropertyDrawer
         }
         else
         {
-            EditorGUI.ObjectField(new Rect(position.x, position.y, position.width - 60, EditorGUIUtility.singleLineHeight), property);
-            if (GUI.Button(new Rect(position.x + position.width - 58, position.y, 58, EditorGUIUtility.singleLineHeight), "Create"))
-            {
-                string selectedAssetPath = "Assets";
-                if (property.serializedObject.targetObject is MonoBehaviour)
-                {
-                    MonoScript ms = MonoScript.FromMonoBehaviour((MonoBehaviour)property.serializedObject.targetObject);
-                    selectedAssetPath = System.IO.Path.GetDirectoryName(AssetDatabase.GetAssetPath(ms));
-                }
-                Type type = fieldInfo.FieldType;
-                if (type.IsArray) type = type.GetElementType();
-                else if (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(List<>)) type = type.GetGenericArguments()[0];
-                property.objectReferenceValue = CreateAssetWithSavePrompt(type, selectedAssetPath);
-            }
+            EditorGUI.ObjectField(new Rect(position.x, position.y, position.width, EditorGUIUtility.singleLineHeight), property, label);
         }
         property.serializedObject.ApplyModifiedProperties();
         EditorGUI.EndProperty();
-    }
-
-    // Creates a new ScriptableObject via the default Save File panel
-    ScriptableObject CreateAssetWithSavePrompt(Type type, string path)
-    {
-        path = EditorUtility.SaveFilePanelInProject("Save ScriptableObject", "New " + type.Name + ".asset", "asset", "Enter a file name for the ScriptableObject.", path);
-        if (path == "") return null;
-        ScriptableObject asset = ScriptableObject.CreateInstance(type);
-        AssetDatabase.CreateAsset(asset, path);
-        AssetDatabase.SaveAssets();
-        AssetDatabase.Refresh();
-        AssetDatabase.ImportAsset(path, ImportAssetOptions.ForceUpdate);
-        EditorGUIUtility.PingObject(asset);
-        return asset;
     }
 }

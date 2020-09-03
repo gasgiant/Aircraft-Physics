@@ -11,8 +11,6 @@ public class AircraftPhysics : MonoBehaviour
     float thrust = 0;
     [SerializeField] 
     List<AeroSurface> aerodynamicSurfaces = null;
-    [SerializeField]
-    List<ControlSurface> controlSurfaces = null;
 
     Rigidbody rb;
     float thrustPercent;
@@ -21,26 +19,6 @@ public class AircraftPhysics : MonoBehaviour
     public void SetThrustPercent(float percent)
     {
         thrustPercent = percent;
-    }
-
-    public void SetControlSurfecesAngles(float pitch, float roll, float yaw)
-    {
-        foreach (var controlSurface in controlSurfaces)
-        {
-            if (controlSurface.surface == null) return;
-            switch (controlSurface.type)
-            {
-                case ControlInputType.Pitch:
-                    controlSurface.surface.SetFlapAngle(pitch * controlSurface.flapAngle);
-                    break;
-                case ControlInputType.Roll:
-                    controlSurface.surface.SetFlapAngle(roll * controlSurface.flapAngle);
-                    break;
-                case ControlInputType.Yaw:
-                    controlSurface.surface.SetFlapAngle(yaw * controlSurface.flapAngle);
-                    break;
-            }
-        }
     }
 
     private void Awake()
@@ -115,7 +93,6 @@ public class AircraftPhysics : MonoBehaviour
         if (rb == null)
         {
             com = GetComponent<Rigidbody>().worldCenterOfMass;
-            SetControlSurfecesAngles(pitch, roll, yaw);
             forceAndTorque = CalculateAerodynamicForces(-displayAirVelocity, Vector3.zero, Vector3.zero, displayAirDensity, com);
         }
         else
@@ -128,14 +105,6 @@ public class AircraftPhysics : MonoBehaviour
         center = com + Vector3.Cross(forceAndTorque.p, forceAndTorque.q) / forceAndTorque.p.sqrMagnitude;
     }
 #endif
-}
-
-[System.Serializable]
-public class ControlSurface
-{
-    public AeroSurface surface;
-    public float flapAngle;
-    public ControlInputType type;
 }
 
 

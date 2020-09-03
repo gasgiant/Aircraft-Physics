@@ -6,6 +6,9 @@ public enum ControlInputType { Pitch, Yaw, Roll }
 public class AeroSurface : MonoBehaviour
 {
     [SerializeField] AeroSurfaceConfig config = null;
+    public bool IsControlSurface;
+    public ControlInputType InputType;
+    public float InputMultiplyer = 1;
 
     private float flapAngle;
 

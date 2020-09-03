@@ -146,13 +146,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 187462852}
-  m_LocalRotation: {x: 0.5000014, y: -0.4999986, z: 0.4999982, w: 0.5000018}
-  m_LocalPosition: {x: 0, y: 0.8, z: -0.65}
+  m_LocalRotation: {x: 0.0000021904707, y: 0.000002361834, z: 0.70710623, w: 0.7071074}
+  m_LocalPosition: {x: -0, y: 1, z: -1.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1827632704}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 90, y: -180, z: -90}
+  m_LocalEulerAnglesHint: {x: 180, y: -180, z: -90}
 --- !u!114 &187462854
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,7 +168,7 @@ MonoBehaviour:
   config: {fileID: 11400000, guid: 1c556595b56eea145b0f626496bf250e, type: 2}
   IsControlSurface: 0
   InputType: 0
-  InputAngleMultiplyer: 1
+  InputMultiplyer: 1
 --- !u!1 &251535524
 GameObject:
   m_ObjectHideFlags: 0
@@ -201,7 +201,7 @@ MonoBehaviour:
   config: {fileID: 11400000, guid: 1c556595b56eea145b0f626496bf250e, type: 2}
   IsControlSurface: 0
   InputType: 0
-  InputAngleMultiplyer: 1
+  InputMultiplyer: 1
 --- !u!4 &251535526
 Transform:
   m_ObjectHideFlags: 0
@@ -209,13 +209,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 251535524}
-  m_LocalRotation: {x: 0.5000014, y: -0.4999986, z: 0.4999982, w: 0.5000018}
-  m_LocalPosition: {x: 0, y: 0.71, z: 2.31}
+  m_LocalRotation: {x: 0.000002592802, y: 0.000002041459, z: 0.70710605, w: 0.7071076}
+  m_LocalPosition: {x: -0, y: 1, z: 1.816}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1827632704}
   m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 90, y: -180, z: -90}
+  m_LocalEulerAnglesHint: {x: 180, y: -180, z: -90}
 --- !u!1 &255338987
 GameObject:
   m_ObjectHideFlags: 0
@@ -1149,9 +1149,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: 7b83a94ddffff604dab6f97596244c2d, type: 2}
-  IsControlSurface: 0
+  IsControlSurface: 1
   InputType: 0
-  InputAngleMultiplyer: 1
+  InputMultiplyer: 1
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1394,9 +1394,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: 7b83a94ddffff604dab6f97596244c2d, type: 2}
-  IsControlSurface: 0
+  IsControlSurface: 1
   InputType: 0
-  InputAngleMultiplyer: 1
+  InputMultiplyer: 1
 --- !u!4 &1004010050
 Transform:
   m_ObjectHideFlags: 0
@@ -1455,9 +1455,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: 3198e37c9344c55429512d3a75e90364, type: 2}
-  IsControlSurface: 0
-  InputType: 0
-  InputAngleMultiplyer: 1
+  IsControlSurface: 1
+  InputType: 2
+  InputMultiplyer: 1
 --- !u!1 &1188863487
 GameObject:
   m_ObjectHideFlags: 0
@@ -1640,9 +1640,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: 3198e37c9344c55429512d3a75e90364, type: 2}
-  IsControlSurface: 0
-  InputType: 0
-  InputAngleMultiplyer: 1
+  IsControlSurface: 1
+  InputType: 2
+  InputMultiplyer: -1
 --- !u!4 &1424892321
 Transform:
   m_ObjectHideFlags: 0
@@ -2227,9 +2227,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: beabc62521ee5b44bb804213867f93bc, type: 2}
-  IsControlSurface: 0
-  InputType: 0
-  InputAngleMultiplyer: 1
+  IsControlSurface: 1
+  InputType: 1
+  InputMultiplyer: 1
 --- !u!4 &1853545997
 Transform:
   m_ObjectHideFlags: 0
@@ -2546,22 +2546,6 @@ MonoBehaviour:
   - {fileID: 1853545996}
   - {fileID: 187462854}
   - {fileID: 251535525}
-  controlSurfaces:
-  - surface: {fileID: 1075455996}
-    flapAngle: 1
-    type: 2
-  - surface: {fileID: 1424892320}
-    flapAngle: -1
-    type: 2
-  - surface: {fileID: 909357082}
-    flapAngle: 1
-    type: 0
-  - surface: {fileID: 1004010049}
-    flapAngle: 1
-    type: 0
-  - surface: {fileID: 1853545996}
-    flapAngle: 1
-    type: 1
 --- !u!114 &2066979582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2574,9 +2558,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b2e651fb6e03814ca392bbc92616e00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controlSurfaces:
+  - {fileID: 1075455996}
+  - {fileID: 1424892320}
+  - {fileID: 909357082}
+  - {fileID: 1004010049}
+  - {fileID: 1853545996}
   rollControlSensitivity: 0.15
   pitchControlSensitivity: 0.2
-  yawControlSensitivity: 0.6
+  yawControlSensitivity: 0.3
 --- !u!1 &2106019376
 GameObject:
   m_ObjectHideFlags: 0
