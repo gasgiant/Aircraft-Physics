@@ -31,12 +31,6 @@ public class AircraftPhysicsDisplaySettings : ScriptableObject
     public float displayAngleOfAttack = 5;
     public float displayAirspeed = 100;
     public float displayAirDensity = 1.2f;
-    [Range(-1, 1)]
-    public float displayPitchControl = 0;
-    [Range(-1, 1)]
-    public float displayRollControl = 0;
-    [Range(-1, 1)]
-    public float displayYawControl = 0;
 
     [Header("Surfaces")]
     public bool showSurfaces = true;

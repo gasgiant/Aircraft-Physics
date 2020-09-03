@@ -1,7 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class AirplaneController : MonoBehaviour
 {
@@ -13,11 +11,13 @@ public class AirplaneController : MonoBehaviour
     float pitchControlSensitivity = 0.2f;
     [SerializeField]
     float yawControlSensitivity = 0.2f;
-    
 
-    float pitch;
-    float yaw;
-    float roll;
+    [Range(-1, 1)]
+    public float Pitch;
+    [Range(-1, 1)]
+    public float Yaw;
+    [Range(-1, 1)]
+    public float Roll;
 
     float thrustPercent;
 
@@ -31,10 +31,9 @@ public class AirplaneController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            SceneManager.LoadScene(0);
-        }
+        Pitch = Input.GetAxis("Vertical");
+        Roll = Input.GetAxis("Horizontal");
+        Yaw = Input.GetAxis("Yaw");
     }
 
     private void SetThrust(float percent)
@@ -44,10 +43,7 @@ public class AirplaneController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        pitch = pitchControlSensitivity * Input.GetAxis("Vertical");
-        roll = rollControlSensitivity * Input.GetAxis("Horizontal");
-        yaw = yawControlSensitivity * Input.GetAxis("Yaw");
-        SetControlSurfecesAngles(pitch, roll, yaw);
+        SetControlSurfecesAngles(Pitch, Roll, Yaw);
         aircraftPhysics.SetThrustPercent(thrustPercent);
     }
 
@@ -59,15 +55,21 @@ public class AirplaneController : MonoBehaviour
             switch (surface.InputType)
             {
                 case ControlInputType.Pitch:
-                    surface.SetFlapAngle(pitch * surface.InputMultiplyer);
+                    surface.SetFlapAngle(pitch * pitchControlSensitivity * surface.InputMultiplyer);
                     break;
                 case ControlInputType.Roll:
-                    surface.SetFlapAngle(roll * surface.InputMultiplyer);
+                    surface.SetFlapAngle(roll * rollControlSensitivity * surface.InputMultiplyer);
                     break;
                 case ControlInputType.Yaw:
-                    surface.SetFlapAngle(yaw * surface.InputMultiplyer);
+                    surface.SetFlapAngle(yaw * yawControlSensitivity * surface.InputMultiplyer);
                     break;
             }
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (!Application.isPlaying)
+            SetControlSurfecesAngles(Pitch, Roll, Yaw);
     }
 }

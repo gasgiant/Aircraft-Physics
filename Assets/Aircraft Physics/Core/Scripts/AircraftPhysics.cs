@@ -79,7 +79,7 @@ public class AircraftPhysics : MonoBehaviour
 
 #if UNITY_EDITOR
     // For gizmos drawing.
-    public void CalculateCenterOfLift(out Vector3 center, out Vector3 force, Vector3 displayAirVelocity, float displayAirDensity, float pitch, float yaw, float roll)
+    public void CalculateCenterOfLift(out Vector3 center, out Vector3 force, Vector3 displayAirVelocity, float displayAirDensity)
     {
         Vector3 com;
         BiVector3 forceAndTorque;

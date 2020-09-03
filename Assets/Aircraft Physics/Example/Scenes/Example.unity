@@ -665,7 +665,7 @@ MonoBehaviour:
     ROLL - Left Stick
     Horizontal or A/D
 
-    YAW - Right Stick Horizontal Q/E'
+    YAW - Triggers or Q/E'
 --- !u!222 &542925209
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2566,7 +2566,10 @@ MonoBehaviour:
   - {fileID: 1853545996}
   rollControlSensitivity: 0.15
   pitchControlSensitivity: 0.2
-  yawControlSensitivity: 0.3
+  yawControlSensitivity: 0.6
+  Pitch: 0
+  Yaw: 0
+  Roll: 0
 --- !u!1 &2106019376
 GameObject:
   m_ObjectHideFlags: 0

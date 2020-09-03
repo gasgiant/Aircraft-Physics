@@ -29,8 +29,7 @@ public static class AircraftGizmos
         Vector3 center;
         Vector3 force;
         phys.CalculateCenterOfLift(out center, out force,
-            phys.transform.TransformDirection(airspeed), settings.displayAirDensity,
-            settings.displayPitchControl, settings.displayYawControl, settings.displayRollControl);
+            phys.transform.TransformDirection(airspeed), settings.displayAirDensity);
 
         if (settings.showAerodynamicCenter)
         {
