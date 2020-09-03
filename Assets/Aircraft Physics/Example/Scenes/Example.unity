@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: cdbb40e11399e4a17882ada20a1b896a, type: 2}
+  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.12222373, g: 0.18884572, b: 0.33950344, a: 1}
+  m_IndirectSpecularColor: {r: 0.1786439, g: 0.22368616, b: 0.3056279, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: 2f5200de13aa6d740ac8ded765ff12b2,
+  m_LightingDataAsset: {fileID: 112000000, guid: 815bca385ead1b34a88b4f2c770aa1fe,
     type: 2}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -884,8 +884,8 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 0.99607843, g: 0.9077775, b: 0.76862746, a: 1}
-  m_Intensity: 1
+  m_Color: {r: 1, g: 0.9906474, b: 0.9764151, a: 1}
+  m_Intensity: 0.82
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -941,13 +941,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
-  m_LocalRotation: {x: 0.99879134, y: -0.005270248, z: 0.0004094681, w: 0.04886673}
+  m_LocalRotation: {x: 0.8376894, y: -0.13097274, z: -0.08356527, w: 0.52358335}
   m_LocalPosition: {x: -5.92, y: 2.62, z: -0.02}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 174.398, y: -0.016998291, z: 0.60398865}
+  m_LocalEulerAnglesHint: {x: 121.20599, y: 32.33899, z: 36.327988}
 --- !u!1001 &871025661
 PrefabInstance:
   m_ObjectHideFlags: 0

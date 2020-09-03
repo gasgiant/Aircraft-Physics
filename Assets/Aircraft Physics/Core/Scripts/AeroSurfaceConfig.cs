@@ -12,6 +12,7 @@ public class AeroSurfaceConfig : ScriptableObject
     public float stallAngleLow = -15;
     public float chord = 1;
     public float flapFraction = 0;
+    public float span;
     public float aspectRatio = 2;
 
     private void OnValidate()

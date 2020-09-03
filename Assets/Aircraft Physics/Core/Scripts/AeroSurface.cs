@@ -31,7 +31,7 @@ public class AeroSurface : MonoBehaviour
 
     public void Initialize()
     {
-        area = config.chord * config.chord * config.aspectRatio;
+        area = config.chord * config.span;
         correctedLiftSlope = config.liftSlope * config.aspectRatio /
            (config.aspectRatio + 2 * (config.aspectRatio + 4) / (config.aspectRatio + 2));
         SetFlapAngle(0);
