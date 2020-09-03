@@ -166,6 +166,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: 1c556595b56eea145b0f626496bf250e, type: 2}
+  IsControlSurface: 0
+  InputType: 0
+  InputAngleMultiplyer: 1
 --- !u!1 &251535524
 GameObject:
   m_ObjectHideFlags: 0
@@ -196,6 +199,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: 1c556595b56eea145b0f626496bf250e, type: 2}
+  IsControlSurface: 0
+  InputType: 0
+  InputAngleMultiplyer: 1
 --- !u!4 &251535526
 Transform:
   m_ObjectHideFlags: 0
@@ -1143,6 +1149,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: 7b83a94ddffff604dab6f97596244c2d, type: 2}
+  IsControlSurface: 0
+  InputType: 0
+  InputAngleMultiplyer: 1
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1220,7 +1229,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: -0.0067646513, y: -1.2991481e-11, z: -0.0000000019203346, w: 0.9999771}
+  m_LocalRotation: {x: -0.006764655, y: 8.0461383e-19, z: 1.1894082e-16, w: 0.9999772}
   m_LocalPosition: {x: 0, y: 2.2078514, z: -15.4689455}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -1244,7 +1253,7 @@ MonoBehaviour:
   m_IgnoreTimeScale: 0
   m_WorldUpOverride: {fileID: 0}
   m_UpdateMethod: 0
-  m_BlendUpdateMethod: 1
+  m_BlendUpdateMethod: 0
   m_DefaultBlend:
     m_Style: 1
     m_Time: 2
@@ -1385,6 +1394,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: 7b83a94ddffff604dab6f97596244c2d, type: 2}
+  IsControlSurface: 0
+  InputType: 0
+  InputAngleMultiplyer: 1
 --- !u!4 &1004010050
 Transform:
   m_ObjectHideFlags: 0
@@ -1443,6 +1455,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: 3198e37c9344c55429512d3a75e90364, type: 2}
+  IsControlSurface: 0
+  InputType: 0
+  InputAngleMultiplyer: 1
 --- !u!1 &1188863487
 GameObject:
   m_ObjectHideFlags: 0
@@ -1502,7 +1517,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1188863487}
-  m_LocalRotation: {x: -0.0067646513, y: -1.2991481e-11, z: -0.0000000019203346, w: 0.9999771}
+  m_LocalRotation: {x: -0.006764655, y: 8.0461383e-19, z: 1.1894082e-16, w: 0.9999772}
   m_LocalPosition: {x: 0, y: 2.2078514, z: -15.4689455}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1625,6 +1640,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: 3198e37c9344c55429512d3a75e90364, type: 2}
+  IsControlSurface: 0
+  InputType: 0
+  InputAngleMultiplyer: 1
 --- !u!4 &1424892321
 Transform:
   m_ObjectHideFlags: 0
@@ -2209,6 +2227,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: beabc62521ee5b44bb804213867f93bc, type: 2}
+  IsControlSurface: 0
+  InputType: 0
+  InputAngleMultiplyer: 1
 --- !u!4 &1853545997
 Transform:
   m_ObjectHideFlags: 0
