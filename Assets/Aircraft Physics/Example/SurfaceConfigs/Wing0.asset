@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 31ad2ae223750974380ba545a828f9a1, type: 3}
-  m_Name: Stabilizer_V
+  m_Name: Wing0
   m_EditorClassIdentifier: 
   liftSlope: 6.28
   skinFriction: 0.02
   zeroLiftAoA: 0
   stallAngleHigh: 15
   stallAngleLow: -15
-  chord: 0.92
-  flapFraction: 0.4
-  span: 1.47
-  autoAspectRatio: 1
-  aspectRatio: 1.5978261
+  chord: 1.57
+  flapFraction: 0.2
+  span: 2.1
+  autoAspectRatio: 0
+  aspectRatio: 3.3400002

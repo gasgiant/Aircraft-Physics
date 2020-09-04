@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AirplaneController : MonoBehaviour
 {
@@ -18,22 +19,32 @@ public class AirplaneController : MonoBehaviour
     public float Yaw;
     [Range(-1, 1)]
     public float Roll;
+    [SerializeField]
+    Text displayText = null;
 
     float thrustPercent;
 
     AircraftPhysics aircraftPhysics;
+    Rigidbody rb;
 
     private void Start()
     {
         aircraftPhysics = GetComponent<AircraftPhysics>();
-        SetThrust(1);
+        rb = GetComponent<Rigidbody>();
     }
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            SetThrust(1);
+        }
         Pitch = Input.GetAxis("Vertical");
         Roll = Input.GetAxis("Horizontal");
         Yaw = Input.GetAxis("Yaw");
+
+        displayText.text = "V: " + ((int)rb.velocity.magnitude).ToString("D3") + " m/s\n\n";
+        displayText.text += "A: " + ((int)transform.position.y).ToString("D4") + " m";
     }
 
     private void SetThrust(float percent)

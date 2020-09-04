@@ -19,12 +19,9 @@ MonoBehaviour:
   comColor: {r: 1, g: 0.445, b: 0, a: 1}
   showAerodynamicCenter: 1
   adcColor: {r: 0.373, g: 0.682, b: 1, a: 1}
-  displayAngleOfAttack: 3
+  displayAngleOfAttack: 0
   displayAirspeed: 100
   displayAirDensity: 1.2
-  displayPitchControl: 0
-  displayRollControl: 0
-  displayYawControl: 0
   showSurfaces: 1
   wingColor: {r: 0.199, g: 0.254, b: 0.981, a: 0.235}
   flapColor: {r: 1, g: 0.633, b: 0.241, a: 0.325}
