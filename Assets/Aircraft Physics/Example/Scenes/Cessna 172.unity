@@ -666,11 +666,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 2.505746
       objectReference: {fileID: 0}
-    - target: {fileID: -908390985500230518, guid: 382fcc17f051f124bb03c63260812145,
-        type: 3}
-      propertyPath: m_Materials.Array.data[2]
-      value: 
-      objectReference: {fileID: 2100000, guid: f9362052c3c3f854a93f9c645cf8c645, type: 2}
     - target: {fileID: 919132149155446097, guid: 382fcc17f051f124bb03c63260812145,
         type: 3}
       propertyPath: m_Name
@@ -754,7 +749,9 @@ MonoBehaviour:
     ROLL - Left Stick
     Horizontal or A/D
 
-    YAW - Triggers or Q/E'
+    YAW - Triggers or Q/E
+
+    FLAPS - F'
 --- !u!222 &542925209
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1242,7 +1239,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.061129205, y: 0.000000017703135, z: 0.000000005570634, w: 0.9981299}
+  m_LocalRotation: {x: 0.061129205, y: -0.000000018111866, z: 0.000000007764077, w: 0.9981299}
   m_LocalPosition: {x: 0, y: 6.27, z: -14.273}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -1468,8 +1465,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: 3198e37c9344c55429512d3a75e90364, type: 2}
-  IsControlSurface: 0
-  InputType: 1
+  IsControlSurface: 1
+  InputType: 3
   InputMultiplyer: 1
 --- !u!1 &1188863487
 GameObject:
@@ -1530,7 +1527,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1188863487}
-  m_LocalRotation: {x: 0.061129205, y: -0.000000018111866, z: 0.000000007764077, w: 0.9981299}
+  m_LocalRotation: {x: 0.061129205, y: 0.000000017293662, z: 0.0000000055957106, w: 0.9981299}
   m_LocalPosition: {x: 0, y: 6.27, z: -14.273}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1717,8 +1714,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: 3198e37c9344c55429512d3a75e90364, type: 2}
-  IsControlSurface: 0
-  InputType: 1
+  IsControlSurface: 1
+  InputType: 3
   InputMultiplyer: 1
 --- !u!4 &1424892321
 Transform:
@@ -2665,7 +2662,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 10.82, y: 0, z: 1.15}
+  m_Size: {x: 10.82, y: 0.1, z: 1.15}
   m_Center: {x: 0, y: 2.08, z: 0.52}
 --- !u!136 &2030733531
 CapsuleCollider:
@@ -2760,7 +2757,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a82a38eccd42dea468bf6634fdcf8e65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thrust: 2450
+  thrust: 3000
   aerodynamicSurfaces:
   - {fileID: 1075455996}
   - {fileID: 1424892320}
@@ -2797,6 +2794,7 @@ MonoBehaviour:
   Pitch: 0
   Yaw: 0
   Roll: 0
+  Flap: 0
   displayText: {fileID: 1480701378}
 --- !u!1 &2106019376
 GameObject:
@@ -2833,8 +2831,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 256.2, y: -100.52}
-  m_SizeDelta: {x: 476.71564, y: 159.68457}
+  m_AnchoredPosition: {x: 256.2, y: -124.4}
+  m_SizeDelta: {x: 476.71564, y: 207.44916}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2106019378
 MonoBehaviour:

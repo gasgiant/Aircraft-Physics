@@ -19,6 +19,8 @@ public class AirplaneController : MonoBehaviour
     public float Yaw;
     [Range(-1, 1)]
     public float Roll;
+    [Range(0, 1)]
+    public float Flap;
     [SerializeField]
     Text displayText = null;
 
@@ -41,6 +43,11 @@ public class AirplaneController : MonoBehaviour
         Roll = Input.GetAxis("Horizontal");
         Yaw = Input.GetAxis("Yaw");
 
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            Flap = Flap > 0 ? 0 : 0.3f;
+        }
+
         displayText.text = "V: " + ((int)rb.velocity.magnitude).ToString("D3") + " m/s\n\n";
         displayText.text += "A: " + ((int)transform.position.y).ToString("D4") + " m";
     }
@@ -52,11 +59,11 @@ public class AirplaneController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        SetControlSurfecesAngles(Pitch, Roll, Yaw);
+        SetControlSurfecesAngles(Pitch, Roll, Yaw, Flap);
         aircraftPhysics.SetThrustPercent(thrustPercent);
     }
 
-    public void SetControlSurfecesAngles(float pitch, float roll, float yaw)
+    public void SetControlSurfecesAngles(float pitch, float roll, float yaw, float flap)
     {
         foreach (var surface in controlSurfaces)
         {
@@ -72,6 +79,9 @@ public class AirplaneController : MonoBehaviour
                 case ControlInputType.Yaw:
                     surface.SetFlapAngle(yaw * yawControlSensitivity * surface.InputMultiplyer);
                     break;
+                case ControlInputType.Flap:
+                    surface.SetFlapAngle(Flap * surface.InputMultiplyer);
+                    break;
             }
         }
     }
@@ -79,6 +89,6 @@ public class AirplaneController : MonoBehaviour
     private void OnDrawGizmos()
     {
         if (!Application.isPlaying)
-            SetControlSurfecesAngles(Pitch, Roll, Yaw);
+            SetControlSurfecesAngles(Pitch, Roll, Yaw, Flap);
     }
 }

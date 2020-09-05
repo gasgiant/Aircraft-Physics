@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   liftSlope: 6.28
   skinFriction: 0.02
-  zeroLiftAoA: 0
+  zeroLiftAoA: -3
   stallAngleHigh: 15
   stallAngleLow: -15
   chord: 1.57
   flapFraction: 0.2
   span: 2.1
   autoAspectRatio: 0
-  aspectRatio: 3.3400002
+  aspectRatio: 7

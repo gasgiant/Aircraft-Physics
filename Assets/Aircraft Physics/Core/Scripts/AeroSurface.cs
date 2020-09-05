@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-public enum ControlInputType { Pitch, Yaw, Roll }
+public enum ControlInputType { Pitch, Yaw, Roll, Flap }
 
 public class AeroSurface : MonoBehaviour
 {
@@ -54,7 +54,7 @@ public class AeroSurface : MonoBehaviour
         float area = config.chord * config.span;
         float dynamicPressure = 0.5f * airDensity * airVelocity.sqrMagnitude;
         float angleOfAttack = Mathf.Atan2(airVelocity.y, -airVelocity.x);
-
+        
         Vector3 aerodynamicCoefficients = CalculateCoefficients(angleOfAttack,
                                                                 correctedLiftSlope,
                                                                 zeroLiftAoA,
