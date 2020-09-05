@@ -7,6 +7,8 @@ public class AirplaneController : MonoBehaviour
     [SerializeField]
     List<AeroSurface> controlSurfaces = null;
     [SerializeField]
+    List<WheelCollider> wheels = null;
+    [SerializeField]
     float rollControlSensitivity = 0.2f;
     [SerializeField]
     float pitchControlSensitivity = 0.2f;
@@ -25,6 +27,7 @@ public class AirplaneController : MonoBehaviour
     Text displayText = null;
 
     float thrustPercent;
+    float brakesTorque;
 
     AircraftPhysics aircraftPhysics;
     Rigidbody rb;
@@ -33,8 +36,6 @@ public class AirplaneController : MonoBehaviour
     {
         aircraftPhysics = GetComponent<AircraftPhysics>();
         rb = GetComponent<Rigidbody>();
-
-        SetThrust(1);
     }
 
     private void Update()
@@ -43,24 +44,37 @@ public class AirplaneController : MonoBehaviour
         Roll = Input.GetAxis("Horizontal");
         Yaw = Input.GetAxis("Yaw");
 
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            thrustPercent = thrustPercent > 0 ? 0 : 1f;
+        }
+
         if (Input.GetKeyDown(KeyCode.F))
         {
             Flap = Flap > 0 ? 0 : 0.3f;
         }
 
-        displayText.text = "V: " + ((int)rb.velocity.magnitude).ToString("D3") + " m/s\n\n";
-        displayText.text += "A: " + ((int)transform.position.y).ToString("D4") + " m";
-    }
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            brakesTorque = brakesTorque > 0 ? 0 : 100f;
+        }
 
-    private void SetThrust(float percent)
-    {
-        thrustPercent = Mathf.Clamp01(percent);
+        displayText.text = "V: " + ((int)rb.velocity.magnitude).ToString("D3") + " m/s\n";
+        displayText.text += "A: " + ((int)transform.position.y).ToString("D4") + " m\n";
+        displayText.text += "T: " + (int)(thrustPercent * 100) + "%\n";
+        displayText.text += brakesTorque > 0 ? "B: ON" : "B: OFF";
     }
 
     private void FixedUpdate()
     {
         SetControlSurfecesAngles(Pitch, Roll, Yaw, Flap);
         aircraftPhysics.SetThrustPercent(thrustPercent);
+        foreach (var wheel in wheels)
+        {
+            wheel.brakeTorque = brakesTorque;
+            // small torque to wake up wheel collider
+            wheel.motorTorque = 0.01f;
+        }
     }
 
     public void SetControlSurfecesAngles(float pitch, float roll, float yaw, float flap)
