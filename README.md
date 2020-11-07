@@ -46,7 +46,7 @@ Each `AeroSurface` with non zero Flap Fraction has a moving part, which deflecti
 
 ## Editor tools
 
-The important part of constructing an aircraft is to understand the balance of it. This system has some rudimentary editor tools for that. First of all, it shows positions of the center of mass (COM, orange wire sphere) and the aerodynamic center (ADC, wire sphere). The latter is defined as a point of application of aerodynamic forces. Secondly, it shows force of gravity and combined aerodynamic forces (arrows pointing from the centers COM and ADC spheres). Lastly, it shows lift, drag and torque acting on each surface as blue, red and green arrows. 
+The important part of constructing an aircraft is to understand the balance of it. This system has some rudimentary editor tools for that. First of all, it shows positions of the center of mass (COM, orange wire sphere) and the aerodynamic center (ADC, blue wire sphere). The latter is defined as a point of application of aerodynamic forces. Secondly, it shows force of gravity and combined aerodynamic forces (arrows pointing from the centers COM and ADC spheres). Lastly, it shows lift, drag and torque acting on each surface as blue, red and green arrows. 
 
 The scriptable object *AircraftPhysicsDisplaySettings* in the *Core/Config* folder allows to change the appearance of this gizmos. You can also choose angle of attack, airspeed and air density for which forces are calculated in Edit mode.
 
