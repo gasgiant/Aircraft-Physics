@@ -89,10 +89,10 @@ public class AeroSurface : MonoBehaviour
         Vector3 aerodynamicCoefficients;
 
         // Low angles of attack mode and stall mode curves are stitched together by a line segment. 
-        float paddingAngle = Mathf.Deg2Rad * Mathf.Lerp(8, 14, Mathf.Abs(Mathf.Abs(Mathf.Rad2Deg * flapAngle) - 50) / 50);
-        float paddedStallAngleHigh = stallAngleHigh + paddingAngle;
-        float paddedStallAngleLow = stallAngleLow - paddingAngle;
-
+        float paddingAnglHigh = Mathf.Deg2Rad * Mathf.Lerp(15, 5, (Mathf.Rad2Deg * flapAngle + 50) / 100);
+        float paddingAnglLow = Mathf.Deg2Rad * Mathf.Lerp(15, 5, (-Mathf.Rad2Deg * flapAngle + 50) / 100);
+        float paddedStallAngleHigh = stallAngleHigh + paddingAnglHigh;
+        float paddedStallAngleLow = stallAngleLow - paddingAnglLow;
 
         if (angleOfAttack < stallAngleHigh && angleOfAttack > stallAngleLow)
         {
