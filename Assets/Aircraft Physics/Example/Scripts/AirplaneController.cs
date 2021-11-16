@@ -41,21 +41,6 @@ public class AirplaneController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            thrustPercent = thrustPercent > 0 ? 0 : 1f;
-        }
-
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            Flap = Flap > 0 ? 0 : 0.3f;
-        }
-
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            brakesTorque = brakesTorque > 0 ? 0 : 100f;
-        }
-
         displayText.text = "V: " + ((int)rb.velocity.magnitude).ToString("D3") + " m/s\n";
         displayText.text += "A: " + ((int)transform.position.y).ToString("D4") + " m\n";
         displayText.text += "T: " + (int)(thrustPercent * 100) + "%\n";
@@ -116,5 +101,20 @@ public class AirplaneController : MonoBehaviour
 	void OnYaw(InputValue value)
 	{
 		Yaw = value.Get<float>();
+	}
+
+    void OnBrakes()
+	{
+		brakesTorque = brakesTorque > 0 ? 0 : 100f;
+	}
+
+    void OnFlaps()
+	{
+		Flap = Flap > 0 ? 0 : 0.3f;
+	}
+
+    void OnThrottle()
+	{
+		thrustPercent = thrustPercent > 0 ? 0 : 1f;
 	}
 }
