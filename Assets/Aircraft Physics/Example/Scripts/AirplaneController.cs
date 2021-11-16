@@ -105,15 +105,14 @@ public class AirplaneController : MonoBehaviour
 
     // New Unity Input
 
-    void OnVertical(InputValue value)
+    void OnPitchRoll(InputValue value)
 	{
-		Pitch = value.Get<float>();
+        Vector2 movement = value.Get<Vector2>();
+
+		Pitch = movement.y;
+		Roll = movement.x;
 	}
 
-	void OnHorizontal(InputValue value)
-	{
-		Roll = value.Get<float>();
-	}
 	void OnYaw(InputValue value)
 	{
 		Yaw = value.Get<float>();
