@@ -1218,7 +1218,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.06112921, y: 0.000000017041149, z: -0.0000000010436635, w: 0.9981299}
+  m_LocalRotation: {x: 0.06112921, y: 0.000000017041074, z: -0.000000001043659, w: 0.9981299}
   m_LocalPosition: {x: 0, y: 6.21, z: -14.273}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1516,7 +1516,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1188863487}
-  m_LocalRotation: {x: 0.06112921, y: 0.000000017041149, z: -0.0000000010436635, w: 0.9981299}
+  m_LocalRotation: {x: 0.06112921, y: 0.000000017041074, z: -0.000000001043659, w: 0.9981299}
   m_LocalPosition: {x: 0, y: 6.21, z: -14.273}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3056,8 +3056,8 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: 
+  m_DefaultControlScheme: Keyboard
+  m_DefaultActionMap: AirplaneControl
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!1 &2106019376
