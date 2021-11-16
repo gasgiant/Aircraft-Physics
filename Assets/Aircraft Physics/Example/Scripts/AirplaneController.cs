@@ -40,10 +40,6 @@ public class AirplaneController : MonoBehaviour
 
     private void Update()
     {
-        Pitch = Input.GetAxis("Vertical");
-        Roll = Input.GetAxis("Horizontal");
-        Yaw = Input.GetAxis("Yaw");
-
         if (Input.GetKeyDown(KeyCode.Space))
         {
             thrustPercent = thrustPercent > 0 ? 0 : 1f;
@@ -105,4 +101,20 @@ public class AirplaneController : MonoBehaviour
         if (!Application.isPlaying)
             SetControlSurfecesAngles(Pitch, Roll, Yaw, Flap);
     }
+
+    // New Unity Input
+
+    void OnVertical(InputValue value)
+	{
+		Pitch = value.Get<float>();
+	}
+
+	void OnHorizontal(InputValue value)
+	{
+		Roll = value.Get<float>();
+	}
+	void OnYaw(InputValue value)
+	{
+		Yaw = value.Get<float>();
+	}
 }
