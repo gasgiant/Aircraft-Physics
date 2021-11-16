@@ -176,7 +176,7 @@
                 {
                     "name": "negative",
                     "id": "08d54320-bd71-481e-96f1-f4cbb53bb9f4",
-                    "path": "<Keyboard>/comma",
+                    "path": "<Keyboard>/q",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard;Joystick",
@@ -187,7 +187,7 @@
                 {
                     "name": "positive",
                     "id": "3f955865-0446-45aa-aa60-f5a32463e57e",
-                    "path": "<Keyboard>/period",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "Joystick;Keyboard",
