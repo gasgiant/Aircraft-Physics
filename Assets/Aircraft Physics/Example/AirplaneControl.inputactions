@@ -25,12 +25,12 @@
                 },
                 {
                     "name": "Throttle",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "40542a18-db82-4a8a-a61f-d7792a3460ab",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Brakes",
@@ -197,17 +197,6 @@
                 },
                 {
                     "name": "",
-                    "id": "8901ac1f-a22c-41cb-a95c-fe0fe4334862",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard;Joystick",
-                    "action": "Throttle",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "d7fb02a7-da11-4548-9ab6-4c819bc47eed",
                     "path": "<Keyboard>/b",
                     "interactions": "",
@@ -227,6 +216,39 @@
                     "action": "Flaps",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "14705b29-c4a8-49a7-b0a4-c2deea3d0d47",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Throttle",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "ac3f9a8f-0f00-43e8-b7fe-9063ad523b1c",
+                    "path": "<Keyboard>/minus",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Throttle",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "555e02df-cc95-4b29-950c-f2ba7259e111",
+                    "path": "<Keyboard>/equals",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Throttle",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         }

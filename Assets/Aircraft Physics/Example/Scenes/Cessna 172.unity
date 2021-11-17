@@ -719,7 +719,7 @@ MonoBehaviour:
     BRAKES
     TOGGLE - B
 
-    THROTTLE TOGGLE - Space'
+    THROTTLE - -/='
 --- !u!222 &542925209
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1218,7 +1218,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.06112921, y: 0.000000017041074, z: -0.000000001043659, w: 0.9981299}
+  m_LocalRotation: {x: 0.06112921, y: 0.00000001704107, z: -0.0000000010436588, w: 0.9981299}
   m_LocalPosition: {x: 0, y: 6.21, z: -14.273}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1500,7 +1500,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.9616477, y: 1}
+    m_SensorSize: {x: 1.9630681, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1516,7 +1516,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1188863487}
-  m_LocalRotation: {x: 0.06112921, y: 0.000000017041074, z: -0.000000001043659, w: 0.9981299}
+  m_LocalRotation: {x: 0.06112921, y: 0.00000001704107, z: -0.0000000010436588, w: 0.9981299}
   m_LocalPosition: {x: 0, y: 6.21, z: -14.273}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3029,6 +3029,7 @@ MonoBehaviour:
   Roll: 0
   Flap: 0
   displayText: {fileID: 1480701378}
+  thrustFactor: 0.3
 --- !u!114 &2066979583
 MonoBehaviour:
   m_ObjectHideFlags: 0

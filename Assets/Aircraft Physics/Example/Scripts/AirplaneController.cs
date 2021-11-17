@@ -27,6 +27,9 @@ public class AirplaneController : MonoBehaviour
     [SerializeField]
     Text displayText = null;
 
+	[SerializeField]
+	float thrustFactor = 0.3f;
+
     float thrustPercent;
     float brakesTorque;
 
@@ -113,8 +116,10 @@ public class AirplaneController : MonoBehaviour
 		Flap = Flap > 0 ? 0 : 0.3f;
 	}
 
-    void OnThrottle()
+    void OnThrottle(InputValue value)
 	{
-		thrustPercent = thrustPercent > 0 ? 0 : 1f;
+		float input = value.Get<float>();
+
+		thrustPercent = Mathf.Clamp(thrustPercent + thrustFactor * input, 0.0f, 1.0f);
 	}
 }
