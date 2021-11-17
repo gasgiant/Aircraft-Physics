@@ -88,7 +88,7 @@
                 {
                     "name": "left",
                     "id": "0594d19a-2bda-4d2f-99eb-3e0bb2ac5702",
-                    "path": "<SwitchProControllerHID>/buttonEast",
+                    "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
@@ -234,7 +234,7 @@
                     "path": "<Keyboard>/minus",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Keyboard;Joystick",
                     "action": "Throttle",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -245,7 +245,7 @@
                     "path": "<Keyboard>/equals",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Keyboard;Joystick",
                     "action": "Throttle",
                     "isComposite": false,
                     "isPartOfComposite": true
