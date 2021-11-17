@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class AirplaneController : MonoBehaviour
 {
@@ -26,6 +27,9 @@ public class AirplaneController : MonoBehaviour
     [SerializeField]
     Text displayText = null;
 
+	[SerializeField]
+	float thrustFactor = 0.3f;
+
     float thrustPercent;
     float brakesTorque;
 
@@ -40,25 +44,6 @@ public class AirplaneController : MonoBehaviour
 
     private void Update()
     {
-        Pitch = Input.GetAxis("Vertical");
-        Roll = Input.GetAxis("Horizontal");
-        Yaw = Input.GetAxis("Yaw");
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            thrustPercent = thrustPercent > 0 ? 0 : 1f;
-        }
-
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            Flap = Flap > 0 ? 0 : 0.3f;
-        }
-
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            brakesTorque = brakesTorque > 0 ? 0 : 100f;
-        }
-
         displayText.text = "V: " + ((int)rb.velocity.magnitude).ToString("D3") + " m/s\n";
         displayText.text += "A: " + ((int)transform.position.y).ToString("D4") + " m\n";
         displayText.text += "T: " + (int)(thrustPercent * 100) + "%\n";
@@ -105,4 +90,36 @@ public class AirplaneController : MonoBehaviour
         if (!Application.isPlaying)
             SetControlSurfecesAngles(Pitch, Roll, Yaw, Flap);
     }
+
+    // New Unity Input
+
+    void OnPitchRoll(InputValue value)
+	{
+        Vector2 movement = value.Get<Vector2>();
+
+		Pitch = movement.y;
+		Roll = movement.x;
+	}
+
+	void OnYaw(InputValue value)
+	{
+		Yaw = value.Get<float>();
+	}
+
+    void OnBrakes()
+	{
+		brakesTorque = brakesTorque > 0 ? 0 : 100f;
+	}
+
+    void OnFlaps()
+	{
+		Flap = Flap > 0 ? 0 : 0.3f;
+	}
+
+    void OnThrottle(InputValue value)
+	{
+		float input = value.Get<float>();
+
+		thrustPercent = Mathf.Clamp(thrustPercent + thrustFactor * input, 0.0f, 1.0f);
+	}
 }
