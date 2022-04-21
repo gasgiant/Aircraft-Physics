@@ -45,16 +45,16 @@ public class AeroSurface : MonoBehaviour
         float stallAngleLow = zeroLiftAoA + clMaxLow / correctedLiftSlope;
 
         // Calculating air velocity relative to the surface's coordinate system.
-        // Z component of the velocity is discarded. 
+        // Z component of the velocity is discarded.
         Vector3 airVelocity = transform.InverseTransformDirection(worldAirVelocity);
-        airVelocity = new Vector3(airVelocity.x, airVelocity.y);
+        airVelocity = new Vector3(0f, airVelocity.y, airVelocity.z);
         Vector3 dragDirection = transform.TransformDirection(airVelocity.normalized);
-        Vector3 liftDirection = Vector3.Cross(dragDirection, transform.forward);
+        Vector3 liftDirection = Vector3.Cross(dragDirection, -transform.right);
 
         float area = config.chord * config.span;
         float dynamicPressure = 0.5f * airDensity * airVelocity.sqrMagnitude;
-        float angleOfAttack = Mathf.Atan2(airVelocity.y, -airVelocity.x);
-        
+        float angleOfAttack = Mathf.Atan2(airVelocity.y, -airVelocity.z);
+
         Vector3 aerodynamicCoefficients = CalculateCoefficients(angleOfAttack,
                                                                 correctedLiftSlope,
                                                                 zeroLiftAoA,
@@ -63,7 +63,7 @@ public class AeroSurface : MonoBehaviour
 
         Vector3 lift = liftDirection * aerodynamicCoefficients.x * dynamicPressure * area;
         Vector3 drag = dragDirection * aerodynamicCoefficients.y * dynamicPressure * area;
-        Vector3 torque = -transform.forward * aerodynamicCoefficients.z * dynamicPressure * area * config.chord;
+        Vector3 torque = transform.right * aerodynamicCoefficients.z * dynamicPressure * area * config.chord;
 
         forceAndTorque.p += lift + drag;
         forceAndTorque.q += Vector3.Cross(relativePosition, forceAndTorque.p);
@@ -83,12 +83,12 @@ public class AeroSurface : MonoBehaviour
     private Vector3 CalculateCoefficients(float angleOfAttack,
                                           float correctedLiftSlope,
                                           float zeroLiftAoA,
-                                          float stallAngleHigh, 
+                                          float stallAngleHigh,
                                           float stallAngleLow)
     {
         Vector3 aerodynamicCoefficients;
 
-        // Low angles of attack mode and stall mode curves are stitched together by a line segment. 
+        // Low angles of attack mode and stall mode curves are stitched together by a line segment.
         float paddingAngleHigh = Mathf.Deg2Rad * Mathf.Lerp(15, 5, (Mathf.Rad2Deg * flapAngle + 50) / 100);
         float paddingAngleLow = Mathf.Deg2Rad * Mathf.Lerp(15, 5, (-Mathf.Rad2Deg * flapAngle + 50) / 100);
         float paddedStallAngleHigh = stallAngleHigh + paddingAngleHigh;
@@ -143,7 +143,7 @@ public class AeroSurface : MonoBehaviour
         float effectiveAngle = angleOfAttack - zeroLiftAoA - inducedAngle;
 
         float tangentialCoefficient = config.skinFriction * Mathf.Cos(effectiveAngle);
-        
+
         float normalCoefficient = (liftCoefficient +
             Mathf.Sin(effectiveAngle) * tangentialCoefficient) / Mathf.Cos(effectiveAngle);
         float dragCoefficient = normalCoefficient * Mathf.Sin(effectiveAngle) + tangentialCoefficient * Mathf.Cos(effectiveAngle);
