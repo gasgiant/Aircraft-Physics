@@ -11,7 +11,7 @@ public class AircraftPhysics : MonoBehaviour
     float thrust = 0;
     
     [SerializeField] 
-    Transform CoM;
+    Transform CoMTrans;
     
     [SerializeField] 
     List<AeroSurface> aerodynamicSurfaces = null;
@@ -33,14 +33,14 @@ public class AircraftPhysics : MonoBehaviour
     private void FixedUpdate()
     {
         BiVector3 forceAndTorqueThisFrame = 
-            CalculateAerodynamicForces(rb.velocity, rb.angularVelocity, Vector3.zero, 1.2f, rb.worldCenterOfMass);
+            CalculateAerodynamicForces(rb.velocity, rb.angularVelocity, Vector3.zero, 1.2f, CoMTrans.position);
 
         Vector3 velocityPrediction = PredictVelocity(forceAndTorqueThisFrame.p
             + transform.forward * thrust * thrustPercent + Physics.gravity * rb.mass);
         Vector3 angularVelocityPrediction = PredictAngularVelocity(forceAndTorqueThisFrame.q);
 
         BiVector3 forceAndTorquePrediction = 
-            CalculateAerodynamicForces(velocityPrediction, angularVelocityPrediction, Vector3.zero, 1.2f, rb.worldCenterOfMass);
+            CalculateAerodynamicForces(velocityPrediction, angularVelocityPrediction, Vector3.zero, 1.2f, CoMTrans.position);
 
         currentForceAndTorque = (forceAndTorqueThisFrame + forceAndTorquePrediction) * 0.5f;
         rb.AddForce(currentForceAndTorque.p);
