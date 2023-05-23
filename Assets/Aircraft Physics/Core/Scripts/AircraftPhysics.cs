@@ -9,6 +9,10 @@ public class AircraftPhysics : MonoBehaviour
 
     [SerializeField] 
     float thrust = 0;
+    
+    [SerializeField] 
+    Transform CoM;
+    
     [SerializeField] 
     List<AeroSurface> aerodynamicSurfaces = null;
 
